@@ -1,0 +1,19 @@
+{
+  "name": "secondhand_treasure",
+  "version": "1.0.0",
+  "description": "a website that allows users to sell/buy pre-owned clothing",
+  "main": "\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001bsrc/server.js)",
+  "scripts": {
+    "test": "SET NODE_ENV=test&& jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diannasokhan/secondhand_treasure.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diannasokhan/secondhand_treasure/issues"
+  },
+  "homepage": "https://github.com/diannasokhan/secondhand_treasure#readme"
+}
