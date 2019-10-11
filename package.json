@@ -4,7 +4,8 @@
   "description": "a website that allows users to sell/buy pre-owned clothing",
   "main": "\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001bsrc/server.js)",
   "scripts": {
-    "test": "SET NODE_ENV=test&& jasmine"
+    "test": "SET NODE_ENV=test&& jasmine",
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/diannasokhan/secondhand_treasure/issues"
   },
-  "homepage": "https://github.com/diannasokhan/secondhand_treasure#readme"
+  "homepage": "https://github.com/diannasokhan/secondhand_treasure#readme",
+  "devDependencies": {
+    "jasmine": "^3.0.0",
+    "request": "^2.83.0"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "express": "^4.16.2"
+  }
 }
