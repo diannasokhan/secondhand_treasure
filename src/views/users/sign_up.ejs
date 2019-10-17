@@ -9,10 +9,10 @@
 
     <main class="container">
 
-
+      <% include ../static/partials/messages.ejs %>  
       <h1>Sign up</h1>
 
-      <form action="/users" method="post">
+      <form action="/user/signup" method="post">
 
         <div class="form-group">
           <label for="email">Email</label>
@@ -28,7 +28,7 @@
 
         <div class="form-group">
           <label for="passwordConfirmation">Password confirmation</label>
-          <input type="password" class="form-control" name="passwordConfirmation" aria-describedby="passwordHelp" placeholder="Enter password confirmation">
+          <input type="passwordConfirmation" class="form-control" name="passwordConfirmation" aria-describedby="passwordHelp" placeholder="Enter password confirmation">
         </div>
 
         <button type="submit" class="btn btn-primary">Sign up</button>
