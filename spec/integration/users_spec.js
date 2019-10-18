@@ -46,7 +46,7 @@ describe("routes: users", () => {
                 });
             });
         });
-        it("should not create a new user with invalid attributes and redirect", () => {
+        it("should not create a new user with invalid attributes and redirect", (done) => {
             const options = {
                 url:"http://localhost:3000/users/sign_up",
                 form: {
