@@ -23,7 +23,7 @@ describe("routes: users", () => {
             })
         })
     })
-    describe("POST /user/signup", () => {
+    describe("POST /users/sign_up", () => {
         it("should create a new user with valid values and redirect", (done) => {
             const options = {
                 url: "http://localhost:3000/users/sign_up",
@@ -65,5 +65,14 @@ describe("routes: users", () => {
                 });
             });
         });
+    })
+    describe("GET /users/sign_in", () => {
+        it("should render a sign in page", (done) => {
+            request.get(`${base}/sign_in`, (err, res, body) => {
+                expect(err).toBeNull();
+                expect(body).toContain("Sign In");
+                done();
+            })
+        })
     })
 })
