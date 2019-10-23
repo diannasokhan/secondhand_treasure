@@ -75,4 +75,13 @@ describe("routes: users", () => {
             })
         })
     })
+    describe("GET /users/account", () => {
+        it("should render user's account page", (done) => {
+            request.get(`${base}/account`, (err, res, body) => {
+                expect(err).toBeNull();
+                expect(body).toContain("My Account");
+                done();
+            })
+        })
+    })
 })
