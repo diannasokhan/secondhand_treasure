@@ -2,7 +2,7 @@ module.exports = {
     init(app){
         const staticRoutes = require("../routes/static");
         const userRoutes = require("../routes/users");
-        const listingRoutes = require("../routes/listing");
+        const listingRoutes = require("../routes/listings");
 
 
         app.use(staticRoutes);

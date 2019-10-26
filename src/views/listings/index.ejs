@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+        <% include ../static/partials/messages.ejs %>
+
+      <h1>Listings</h1>
+
+        <ul class="list-group">
+
+              <% listings.forEach((listing) => { %>
+                <li class="list-group-item">
+                  <a href="/listings/<%= listing.id %>">
+                    <%= listing.title %> 
+                    <img src="/uploads/<%= listing.picture %>" alt="listing picture" style="width:100px;height:100px"/>
+                  </a>
+                </li>
+              <% }) %>
+        </ul>
+      
+
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
