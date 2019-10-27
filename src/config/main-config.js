@@ -14,7 +14,8 @@ module.exports = {
     init(app, express){
         app.set("views", viewsFolder);
         app.set("view engine", "ejs");
-        app.use(express.static("uploads"))
+        app.use(bodyParser.urlencoded({ extended: true }));
+        app.use('/uploads', express.static(path.join(__dirname, "../../uploads")));
         app.use(express.static(path.join(__dirname, "..", "assets")));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(expressValidator());
