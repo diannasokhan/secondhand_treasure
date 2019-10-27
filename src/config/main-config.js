@@ -7,8 +7,8 @@ const session = require("express-session");
 const flash = require("express-flash");
 const passportConfig = require("./passport-config");
 const multer = require("multer");
-
-
+const aws = require("aws-sdk");
+const multers3 = require("multer-s3");
 
 module.exports = {
     init(app, express){
@@ -18,6 +18,7 @@ module.exports = {
         app.use('/uploads', express.static(path.join(__dirname, "../../uploads")));
         app.use(express.static(path.join(__dirname, "..", "assets")));
         app.use(bodyParser.urlencoded({ extended: true }));
+        app.use(bodyParser.json())
         app.use(expressValidator());
         app.use(
           session({

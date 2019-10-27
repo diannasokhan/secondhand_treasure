@@ -1,18 +1,27 @@
 const path = require("path")
 const express = require("express");
 const router = express.Router();
+const aws = require("aws-sdk");
 const multer = require("multer");
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/')
-    },
-    filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + new Date().toISOString().replace(/:/g, '-') + path.extname(file.originalname))
-    }
-  })
-  
-  const upload = multer({ storage: storage })
+const multerS3 = require("multer-s3");
+aws.config.update({
+  secretAccessKey: process.env.secretAccessKey,
+  accessKeyId: process.env.accessKeyId,
+  region: "us-east-1"
+})
 
+const s3 = new aws.S3();
+
+
+const upload = multer({
+  storage: multerS3({
+      s3: s3,
+      bucket: 'secondhandtreasure',
+      filename: function (req, file, cb) {
+        cb(null, file.fieldname + '-' + new Date().toISOString().replace(/:/g, '-') + path.extname(file.originalname))
+      }
+  })
+});
 
 const listingController = require("../controllers/listingController")
 
