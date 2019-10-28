@@ -6,7 +6,7 @@ module.exports = {
     index(req, res, next){
         listingQueries.getAllListings((err, listings) => {
             if(err){
-                res.redirect(500, "static/index")
+                res.redirect(500, "/static/index")
             }else{
                 res.render("listings/index", {listings})
             }
