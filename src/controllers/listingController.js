@@ -23,7 +23,7 @@ module.exports = {
                 size: req.body.size,
                 color: req.body.color,
                 description: req.body.description,
-                picture: req.file.filename
+                picture:req.file.key
            };
            listingQueries.addListing(newListing, (err, listing) =>{
                if(err){

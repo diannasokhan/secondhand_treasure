@@ -18,7 +18,6 @@ const upload = multer({
       s3: s3,
       bucket: 'secondhandtreasure',
       key: (req, file, cb) => {
-        console.log(file)
         cb(null, file.fieldname + '-' + new Date().toISOString().replace(/:/g, '-') + path.extname(file.originalname))
       }
   })
