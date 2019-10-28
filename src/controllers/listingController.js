@@ -38,7 +38,7 @@ module.exports = {
            })
         }else{
             req.flash("notice", "Listing not created")
-            res.redirect("listings/new")
+            res.redirect("/listings/new")
         }
 
     }
