@@ -34,6 +34,7 @@ module.exports = {
            };
            listingQueries.addListing(newListing, (err, listing) =>{
                if(err){
+                   console.log(err)
                    req.flash("error", buildErrorList(err) );
                    res.redirect("/listings/new");
                    
