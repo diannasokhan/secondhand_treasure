@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+      <h1 class="listing-title"><%= listing.title %></h1>
+      <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture" class="img-thumbnail" id="listing-img">
+      <ul class="list-group" id="listing-list">
+        <li class="list-group-item">Type: <%= listing.type %></li>
+        <li class="list-group-item">Size: <%= listing.size %></li>
+        <li class="list-group-item">Color: <%= listing.color %></li>
+        <li class="list-group-item">Description: <%= listing.description %></li>
+        
+
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>

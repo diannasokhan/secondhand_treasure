@@ -27,20 +27,27 @@ module.exports = {
            };
            listingQueries.addListing(newListing, (err, listing) =>{
                if(err){
-                   console.log(err)
                    req.flash("error", err);
                    res.redirect("/listings/new");
                    
                }else{
-                   req.flash("notice", "Listing created")
+                   req.flash("notice", "Listing created");
                    res.redirect("/listings/index");
                    
                }
-           })
+           });
         }else{
-            req.flash("notice", "Listing not created")
-            res.redirect("/listings/new")
+            req.flash("notice", "Listing not created");
+            res.redirect("/listings/new");
         }
-
+    },
+    show(req, res, next){
+        listingQueries.getListing(req.params.id, (err, listing) => {
+            if(err || listing == null){
+                res.redirect(404, "/");
+            }else{
+                res.render("listings/show", {listing})
+            }
+        })
     }
 }

@@ -11,3 +11,18 @@ body {
 .account-heading {
     text-align: center;
 }
+
+#listing-list > .list-group-item {
+    text-align: center;
+}
+.listing-title {
+    text-align: center;
+}
+
+#listing-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border-radius: 50%;
+}

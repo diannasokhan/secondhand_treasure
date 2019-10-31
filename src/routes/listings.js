@@ -28,5 +28,6 @@ const listingController = require("../controllers/listingController")
 router.get("/listings/index", listingController.index)
 router.get("/listings/new", listingController.new);
 router.post("/listings/new", upload.single("myFile"), listingController.create);
+router.get("/listings/:id", listingController.show)
 
 module.exports = router;

@@ -21,6 +21,14 @@ module.exports = {
             callback(null, listings)
         }).catch((err) => {
             callback(err);
-        })
+        });
+    },
+    getListing(id, callback){
+        return Listing.findByPk(id)
+        .then((listing) => {
+            callback(null, listing);
+        }).catch((err) => {
+            callback(err);
+        });
     }
 }

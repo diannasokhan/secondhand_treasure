@@ -15,12 +15,13 @@
         <ul class="list-group">
 
               <% listings.forEach((listing) => { %>
-                <li class="list-group-item">
-                  <a href="/listings/<%= listing.id %>">
+                <div class="row">
+                  <div class="col-sm-3"><a href="/listings/<%= listing.id %>">
                     <%= listing.title%> 
                     <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture" class="img-thumbnail">
                   </a>
-                </li>
+                  </div>
+                </div>
               <% }) %>
         </ul>
       
