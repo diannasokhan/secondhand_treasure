@@ -1,13 +1,6 @@
 
 const listingQueries = require("../db/queries.listings.js");
-function buildErrorList(err) {
-    return err.errors.map(error => ({
-      location: "body",
-      param: error.path + ":",
-      msg: error.message,
-      value: ""
-    }));
-  }
+
 
 module.exports = {
     index(req, res, next){
@@ -35,7 +28,7 @@ module.exports = {
            listingQueries.addListing(newListing, (err, listing) =>{
                if(err){
                    console.log(err)
-                   req.flash("error", buildErrorList(err) );
+                   req.flash("error", err);
                    res.redirect("/listings/new");
                    
                }else{
