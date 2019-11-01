@@ -24,10 +24,17 @@ module.exports = (sequelize, DataTypes) => {
     picture: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {});
   Listing.associate = function(models) {
-    // associations can be defined here
+    Listing.belongsTo(models.User, {
+      foreignKey: "userId",
+      onDelete: "CASCADE"
+    })
   };
   return Listing;
 };

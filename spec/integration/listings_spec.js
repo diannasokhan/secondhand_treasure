@@ -3,25 +3,38 @@ const server = require("../../src/server");
 const base = "http://localhost:3000/listings";
 const sequelize = require("../../src/db/models/index").sequelize;
 const Listing = require("../../src/db/models").Listing;
+const User = require("../../src/db/models").User
 
 describe("routes : listings", () => {
 
+
     beforeEach((done) => {
         this.listing;
+        this.user;
         sequelize.sync({force: true}).then((res) => {
-            Listing.create({
-                title: "yellow shirt",
-                type: "shirt",
-                size: "medium",
-                color: "yellow",
-                description: "NWT",
-                picture: "bbb.jpg" 
-            }).then((listing) => {
-                this.listing = listing;
-                done();
-            }).catch((err) => {
-                console.log(err);
-                done();
+            User.create({
+                email: "diannaS@gmail.com",
+                password: "hello123",
+                passwordConfirmation: "hello123",
+                role: "member"
+            }).then((user) => {
+                this.user = user;
+
+                Listing.create({
+                    title: "yellow shirt",
+                    type: "shirt",
+                    size: "medium",
+                    color: "yellow",
+                    description: "NWT",
+                    picture: "bbb.jpg",
+                    userId: this.user.id 
+                }).then((listing) => {
+                    this.listing = listing;
+                    done();
+                }).catch((err) => {
+                    console.log(err);
+                    done();
+                })
             })
         })
     })
@@ -31,6 +44,7 @@ describe("routes : listings", () => {
                 expect(err).toBeNull();
                 expect(body).toContain("Listings");
                 expect(body).toContain("yellow shirt");
+                expect(this.listing.userId).toBe(this.user.id);
                 done();
             })
         })
@@ -45,47 +59,57 @@ describe("routes : listings", () => {
            });
        });
    });
-   describe("POST /listings/new", () => {
-       
-       it("should create a listing", (done) => {
+   
+   describe("POST /listings/:id/destroy", () => {
+       it("should delete the listing with the associated ID", (done) => {
+           Listing.findAll()
+           .then((listings) => {
+               const listingCountBeforeDelete = listings.length;
+               expect(listingCountBeforeDelete).toBe(1);
 
-        const options = {
-
-            url: `${base}/new`,
-            form: {
-             title: "black sweater",
-             type: "outerwear",
-             size: "medium",
-             color: "black",
-             description: "gently used black sweater",
-             
-            }
-       };
-           request.post(options, (err, res, body) => {
-                Listing.findOne({where: {id: 2}})
-            
-                .then((listing) => {
-                   console.log(listing)
+               request.post(`${base}/${this.listing.id}/destroy`, (err, res, body) => {
+                   Listing.findAll()
+                   .then((listings) => {
                     expect(err).toBeNull();
-                    expect(listing.type).toBe("outerwear");
-                    expect(listing.size).toBe("medium");
-                    expect(listing.color).toBe("black");
-                    expect(listing.description).toBe("gently used black sweater");
-                    expect(listing.picture).toBe("aaa.jpg");
+                    expect(listings.length).toBe(listingCountBeforeDelete - 1);
                     done();
-                }).catch((err) => {
-                    console.log(err);
-                    done();
-                });
+                   })
+               });
            });
        });
    });
-   describe("GET /listings/:id", () => {
-       it("should render a view with the selected listing", () => {
-           request.get(`${base}/listings/${this.listing.id}`, (err, res, body) => {
+   describe("GET /listings/:id/edit", () => {
+      it("should render a view with an edit listing form", (done) => {
+          request.get(`${base}/${this.listing.id}/edit`, (err, res, body) => {
+            expect(err).toBeNull();
+            expect(body).toContain("Edit Listing");
+            expect(body).toContain("yellow shirt");
+            done();
+          });
+      });
+   });
+   describe("POST /listings/:id/update", () => {
+       it("should update the listing with the given value", (done) => {
+           const options = {
+               url: `${base}/${this.listing.id}/update`,
+               form: {
+                   title: "yellow cashmere sweater",
+                   type: "sweater",
+                   size: "medium",
+                   color: "yellow",
+                   description: "very gently used sweater"
+               }
+           };
+           request.post(options, (err, res, body) => {
                expect(err).toBeNull();
-               expect(body).toContain("yellow shirt");
-               done();
+               
+               Listing.findOne({
+                   where: {id: this.listing.id}
+               }).then((listing) => {
+                   expect(listing.title).toBe("yellow cashmere sweater");
+                   expect(listing.description).toBe("very gently used sweater");
+                   done();
+               });
            });
        });
    });

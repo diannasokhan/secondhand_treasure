@@ -1,6 +1,8 @@
 const path = require("path")
 const express = require("express");
 const router = express.Router();
+const validation = require("./validation");
+const helper = require("../auth/helpers");
 const aws = require("aws-sdk");
 const multer = require("multer");
 const multerS3 = require("multer-s3");
@@ -27,7 +29,10 @@ const listingController = require("../controllers/listingController")
 
 router.get("/listings/index", listingController.index)
 router.get("/listings/new", listingController.new);
-router.post("/listings/new", upload.single("myFile"), listingController.create);
-router.get("/listings/:id", listingController.show)
+router.post("/listings/new", helper.ensureAuthenticated, upload.single("myFile"), validation.validateListings, listingController.create);
+router.get("/listings/:id", listingController.show);
+router.post("/listings/:id/destroy", listingController.destroy);
+router.get("/listings/:id/edit", listingController.edit);
+router.post("/listings/:id/update", validation.validateListings, listingController.update);
 
 module.exports = router;
