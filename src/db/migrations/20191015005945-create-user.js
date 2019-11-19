@@ -14,7 +14,7 @@ module.exports = {
         unique: true,
         validate: {
           isEmail: {msg: "must be a valid email"}
-        },
+        }
       },
       password: {
         allowNull:false,

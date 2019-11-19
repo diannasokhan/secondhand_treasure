@@ -75,8 +75,9 @@ module.exports = {
     },
     destroy(req, res, next){
         listingQueries.deleteListing(req, (err, listing) => {
+          
             if(err){
-                res.redirect(500, `/listings/${listing.id}`)
+                res.redirect(500, `/listings/${req.params.id}`)
             }else{
                 req.flash("notice", "Listing deleted!")
                 res.redirect(303, "/listings/index")

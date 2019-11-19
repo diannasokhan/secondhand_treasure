@@ -4,7 +4,7 @@ const base = "http://localhost:3000/users";
 const User = require("../../src/db/models").User;
 const sequelize = require("../../src/db/models/index").sequelize;
 
-describe("routes: users", () => {
+describe("routes : users", () => {
     beforeEach((done) => {
         sequelize.sync({force: true})
         .then(() => {
@@ -20,9 +20,9 @@ describe("routes: users", () => {
                 expect(err).toBeNull();
                 expect(body).toContain("Sign up");
                 done();
-            })
-        })
-    })
+            });
+        });
+    });
     describe("POST /users/sign_up", () => {
         it("should create a new user with valid values and redirect", (done) => {
             const options = {
@@ -51,7 +51,8 @@ describe("routes: users", () => {
                 url:"http://localhost:3000/users/sign_up",
                 form: {
                     email: "hihi",
-                    password: "hellohello"
+                    password: "hellohello",
+                    passwordConfirmation: "hiii"
                 }
             }
             request.post(options, (err, res, body) => {
@@ -65,23 +66,23 @@ describe("routes: users", () => {
                 });
             });
         });
-    })
+    });
     describe("GET /users/sign_in", () => {
         it("should render a sign in page", (done) => {
             request.get(`${base}/sign_in`, (err, res, body) => {
                 expect(err).toBeNull();
                 expect(body).toContain("Sign In");
                 done();
-            })
-        })
-    })
+            });
+        });
+    });
     describe("GET /users/account", () => {
         it("should render user's account page", (done) => {
             request.get(`${base}/account`, (err, res, body) => {
                 expect(err).toBeNull();
                 expect(body).toContain("My Account");
                 done();
-            })
-        })
-    })
+            });
+        });
+    });
 })
