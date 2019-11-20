@@ -19,6 +19,15 @@ describe("routes : listings", () => {
             }).then((user) => {
                 this.user = user;
 
+                request.get({
+                    url: "http://localhost:3000/auth/fake",
+                    form: {
+                        role: user.role,
+                        id: user.id,
+                        email: user.email
+                    }
+                });
+
                 Listing.create({
                     title: "yellow shirt",
                     type: "shirt",
@@ -37,22 +46,7 @@ describe("routes : listings", () => {
             });
         });
     });
-    describe("admin user performing CRUD actions for listings", () => {
-        beforeEach((done) => {
-            request.get({
-              url: "http://localhost:3000/auth/fake",
-              form: {
-                email:"dianna222@gmail.com",
-                password: "heythere1111",
-                role: "admin"
-              }
-            },
-              (err, res, body) => {
-                done();
-              }
-            );
-          });
-
+    
         describe("GET /listings/index", () => {
             it("should list all listings", (done) => {
                 request.get(`${base}/index`, (err, res, body) => {
@@ -127,6 +121,4 @@ describe("routes : listings", () => {
                  });
              });
          });
-    })
-    
 })
