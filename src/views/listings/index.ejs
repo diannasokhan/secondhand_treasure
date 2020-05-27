@@ -12,18 +12,18 @@
 
       <h1>Listings</h1>
 
-        <ul class="list-group">
 
-              <% listings.forEach((listing) => { %>
-                <div class="row">
-                  <div class="col-sm-3"><a href="/listings/<%= listing.id %>">
-                    <%= listing.title%> 
-                    <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture" class="img-thumbnail">
-                  </a>
-                  </div>
-                </div>
-              <% }) %>
-        </ul>
+          <div class="list-group">
+
+            <% listings.forEach((listing) => { %>
+              <div class="list-item">
+                <a href="/listings/<%= listing.id %>">
+                  <%= listing.title%>
+                  <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture">
+                </a>
+              </div>
+            <% }) %>
+      </ul>
       
 
     </main>

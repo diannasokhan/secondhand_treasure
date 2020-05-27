@@ -7,21 +7,38 @@
 
       <% include ./partials/navbar.ejs %>
 
-   
-      <main class="container">
-
-        
+    
+      <div class="container-1"> 
         <div class="jumbotron jumbotron-fluid bg-light">
             <div class="container text-center">
               <h1 class="display-4">Secondhand Treasures</h1>
               <p class="lead">One man's trash is another man's treasure</p>
             </div>
         </div>
+      </div>
 
+      <div class="container-2">
+        <div class="clothing-category" id="search-tops">
+          <a href="#" >
+            <span class="item-name">Tops</span>
+            <img src="images/tops.jpg" alt="Picture of tops">
+          </a>
+        </div>
+        <div class="clothing-category" id="search-shoes">
+          <a href="#">
+            <span class="item-name">Shoes</span>
+            <img src="images/shoes.jpg" alt="Picture of Shoes">
+          </a>
+        </div>
+        <div class="clothing-category" id="search-bottoms">
+          <a href="#">
+            <span class="item-name">Bottoms</span>
+            <img src="images/pants-2.jpg" alt="Picture of Pants">
+          </a>
+        </div>    
+      </div>
 
-      </main>
       
-
       <% include ./partials/baseScripts.ejs %>
     </body>
 </html>
