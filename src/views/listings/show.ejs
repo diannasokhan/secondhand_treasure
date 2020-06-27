@@ -15,10 +15,12 @@
         <li class="list-group-item">Color: <%= listing.color %></li>
         <li class="list-group-item">Description: <%= listing.description %></li>
        </ul>
-       <form style="display:initial" action="/listings/<%= listing.id %>/destroy" method="POST">
-        <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
-      </form>
-      <a href="/listings/<%= listing.id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+      <div class="listing-options">
+        <form style="display:initial" action="/listings/<%= listing.id %>/destroy" method="POST">
+          <button type="submit" class="btn btn-secondary btn-sm">Delete</button>
+        </form>
+        <a href="/listings/<%= listing.id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+      </div>
 
     </main>
 

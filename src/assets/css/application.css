@@ -119,7 +119,21 @@ btn btn-light {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 30%;
+    height: 30%;
     border:none;
     padding-bottom: 20px;
+}
+
+#listing-list {
+    margin: 10px;
+}
+
+#listing-list > .list-group-item {
+    border: none;
+    background-color:#f8f9fa;
+}
+
+.listing-options {
+    text-align: center;
 }
