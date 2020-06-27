@@ -7,7 +7,7 @@
 
     <% include ../static/partials/navbar.ejs %>
 
-    <main class="container">
+    <main class="new-container">
         <% include ../static/partials/messages.ejs %>
 
       <h1>New Listing</h1>
@@ -17,17 +17,23 @@
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" placeholder="Enter Title">
         </div>
-        <div class="form-group">
+        <div class="form-row">
+          <div class="form-group col-md-2">
             <label for="type">Type</label>
-            <input type="text" class="form-control" name="type" placeholder="Enter Type">
-        </div>
-        <div class="form-group">
+            <select class="form-control" name="type">
+              <option>Top</option>
+              <option>Bottom</option>
+              <option>Shoe</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
             <label for="size">Size</label>
             <input type="text" class="form-control" name="size" placeholder="Enter Size">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label for="color">Color</label>
             <input type="text" class="form-control" name="color" placeholder="Enter Color">
+        </div>
         </div>
         <div class="form-group">
             <label for="description">Description</label>

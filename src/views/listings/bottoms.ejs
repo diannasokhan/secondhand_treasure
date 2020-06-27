@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+        <% include ../static/partials/messages.ejs %>
+      
+        <h1>Bottoms</h1>
+
+          <div class="list-group">
+
+            <% listings.forEach((listing) => { %>
+                <% if(listing.type == "Bottom") { %>
+                <div class="list-item">
+                  <a href="/listings/<%= listing.id %>">
+                    <%= listing.title%>
+                    <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture">
+                  </a>
+                </div>
+                <% } %>
+              <% }) %>
+      </ul>
+      
+
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>

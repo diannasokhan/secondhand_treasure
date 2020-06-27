@@ -10,18 +10,20 @@
     <main class="container">
         <% include ../static/partials/messages.ejs %>
       
-        <h1>Listings</h1>
+        <h1>Tops</h1>
 
           <div class="list-group">
 
             <% listings.forEach((listing) => { %>
-              <div class="list-item">
-                <a href="/listings/<%= listing.id %>">
-                  <%= listing.title%>
-                  <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture">
-                </a>
-              </div>
-            <% }) %>
+                <% if(listing.type == "Top") { %>
+                <div class="list-item">
+                  <a href="/listings/<%= listing.id %>">
+                    <%= listing.title%>
+                    <img src="https://secondhandtreasure.s3.amazonaws.com/<%= listing.picture %>" alt="listing picture">
+                  </a>
+                </div>
+                <% } %>
+              <% }) %>
       </ul>
       
 

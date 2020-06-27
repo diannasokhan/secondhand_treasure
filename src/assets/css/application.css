@@ -1,59 +1,34 @@
+/* elements */
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+btn btn-light {
+    text-align: center;
+}
+
+
+/* static/index*/
+
 .container-1 {
-    padding: 20px;
+    margin-top: 10px;
 }
 
 .container-2 {
      margin: 0 auto;
      height: 200px;
      width:75%;
-     text-align: center;
-}
-
-h1 {
-    margin-bottom: 20px;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: center;
 }
 
 .jumbotron {
     padding-top: 20px;
     padding-bottom: 20px;
-}
-.account-heading {
-    text-align: center;
-}
-
-#listing-list > .list-group-item {
-    text-align: center;
-}
-.listing-title {
-    text-align: center;
-}
-
-#listing-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-    border-radius: 50%;
-}
-
-.list-group, .container-2 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-.list-item {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    text-align: center;
-    overflow: hidden;
-}
-
-.list-item img {
-    max-width: 100%;
-    max-height: 100%;
 }
 
 #search-shoes, #search-bottoms, #search-tops{
@@ -62,11 +37,89 @@ h1 {
     overflow: hidden;
  }
 
- .clothing-category, .clothing-category img {
+ .clothing-category img {
      height: 90%;
+     width: 75%;
      padding: 5px;
+     margin-top: 20px;
  }
 
-btn btn-light {
+ .clothing-category {
+    position: relative;
+    height: 90%;
+    padding: 5px;
+}
+
+.item-name {
+    position:absolute;
+    top: 0;
+    width:100%;
+    display: block;
+ 
+}
+
+ /* listings/index */
+
+.list-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.list-item {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.list-item img {
+    max-width: 80%;
+    max-height: 80%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.list-item {
+    position: relative;
+}
+
+/* listings/show */
+
+#listing-list  .list-group-item {
     text-align: center;
+}
+.listing-title {
+    text-align: center;
+}
+
+
+.account-heading {
+    text-align: center;
+}
+
+/** containers **/
+
+.new-container {
+    margin: 0 auto;
+    width: 60%
+}
+
+.sign-in-container, .sign-up-container, .user-container {
+    margin:0 auto;
+    width: 40%;
+}
+
+/** listings/show **/
+
+#listing-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border:none;
+    padding-bottom: 20px;
 }

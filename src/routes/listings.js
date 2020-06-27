@@ -27,7 +27,10 @@ const upload = multer({
 
 const listingController = require("../controllers/listingController")
 
-router.get("/listings/index", listingController.index)
+router.get("/listings/index", listingController.index);
+router.get("/listings/shoes", listingController.shoesPage);
+router.get("/listings/tops", listingController.topsPage);
+router.get("/listings/bottoms", listingController.bottomsPage);
 router.get("/listings/new", listingController.new);
 router.post("/listings/new", helper.ensureAuthenticated, upload.single("myFile"), validation.validateListings, listingController.create);
 router.get("/listings/:id", listingController.show);

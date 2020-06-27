@@ -20,6 +20,33 @@ module.exports = {
             }
         });
     },
+    shoesPage(req, res, next){
+        listingQueries.getAllListings((err, listings) => {
+            if(err){
+                res.redirect(500, "/");
+            }else{
+                res.render("listings/shoes", {listings})
+            }
+        });
+    },
+    topsPage(req, res, next){
+        listingQueries.getAllListings((err, listings) => {
+            if(err){
+                res.redirect(500, "/");
+            }else{
+                res.render("listings/tops", {listings})
+            }
+        });
+    },
+    bottomsPage(req, res, next){
+        listingQueries.getAllListings((err, listings) => {
+            if(err){
+                res.redirect(500, "/");
+            }else{
+                res.render("listings/bottoms", {listings})
+            }
+        });
+    },
     new(req, res, next){
         const authorized = new Authorizer(req.user).new()
         if(authorized){
